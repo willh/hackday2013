@@ -1,4 +1,4 @@
-class Incident
+class incident
     
     attr_accessor :summary, :date, :location, :category, :status
 
