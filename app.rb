@@ -13,7 +13,7 @@ use Rack::Session::Cookie, :key => FEEDBACK_KEY,
 
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
-  set :database, ENV['DATABASE_URL'] || 'postgres://postgres:root@localhost/hackday2013'
+  set :database, ENV['DATABASE_URL'] || 'postgres://localhost/hackday2013'
 end
 
 helpers do
