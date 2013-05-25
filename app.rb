@@ -2,9 +2,9 @@
 require 'rubygems'
 require 'sinatra'
 require 'dm-core'
-require 'dm-timestamps'  
-require 'dm-validations'  
-require 'dm-migrations' 
+require 'dm-timestamps'
+require 'dm-validations'
+require 'dm-migrations'
 
 FEEDBACK_KEY = "best.feedback"
 
@@ -34,10 +34,6 @@ end
 
 get '/contact' do
   erb :contact
-end
-
-get '/context' do
-  erb :context
 end
 
 get '/feedback' do
