@@ -1,42 +1,54 @@
-<form>
-  <fieldset>
-    <legend>Context</legend>
+<form id="postForm" action="/feedback" method='post'>
+   <fieldset>
+      <legend>Feedback</legend>
       <div class="row-fluid">
-	      <div class="span6 bottomMargin">
-	    	<label>Date of incident</label>
-	    	<input type="date" placeholder="">
-	    	<span class="help-block">Please enter the date the incident occured.</span>
-	      </div>
-	      <div class="span6">
-	   	<label>Time of incident</label>
-	    	<input type="datetime" placeholder="">
-	       	<span class="help-block">Please enter the time of the day the incident occured.</span>
-	      </div>
+         <div class="span6 bottomMargin">
+            <label>Date of incident</label>
+            <input name="date" type="date" placeholder="">
+            <span class="help-block">Please enter the date the incident occured.</span>
+         </div>
+         <div class="span6">
+            <label>Time of incident</label>
+            <input type="datetime" placeholder="">
+            <span class="help-block">Please enter the time of the day the incident occured.</span>
+         </div>
       </div>
       <div class="row-fluid">
-	      <div class="span6">
-       		<label>Location of incident</label>
-   		<input type="datetime" placeholder="">
-    		<span class="help-block">In what ward did this incident occur?</span>
-	      </div>
-	      <div class="span6">
-       		<label>Location of incident</label>
-   		<input type="datetime" placeholder="">
-    		<span class="help-block">In what ward did this incident occur?</span>
-	      </div>
+      <div class="span6">
+         <label>Location of incident</label>
+         <input type="datetime" placeholder="">
+         <span class="help-block">In what ward did this incident occur?</span>
       </div>
-  </fieldset>
+      <div class="span6">
+      <legend>Incident Type</legend>
+		      <div class="row-fluid">
+		      <div class="span3 bottomMargin " name="general" onclick="changeType(event)">
+		      	<img class="launchIcon" src="/vendor/smiley_face.png"/></a>
+		      	<span class="help-block launchIconText">Tell us what made you feel safe whilst in our care!</span>
+		      </div>
+	      <div class="span1"></div>
+		      <div class="span3 bottomMargin " name="miscommunication" onclick="changeType(event)">
+		      	<img class="launchIcon" src="/vendor/miscommunication.png"/></a>
+		      	<span class="help-block launchIconText">Do you feel there was a miscommunication between you and our staff?</span>
+		      </div>
+	      <div class="span1"></div>
+		      <div class="span3 bottomMargin " name="drug-errors" onclick="changeType(event)">
+		      	<img class="launchIcon" src="/vendor/syringe_icon.png"/></a>
+		      	<span class="help-block launchIconText">Do you feel that there was an issue with your medicine?</span>
+		      </div>
+	      <div class="span1"></div>
+       </div>
+   </fieldset>
 </form>
-  </div>
-</div>
-<a href="/feedback/drug-errors">Drugs!</a>
-<a href="/feedback/miscommunication">miscommunication!</a>
-
-
-Date 
-Time of day 
-Summary 
-Location
-Category
-RAG status 
-
+<script>
+	//called before the page is submitted. Turns the selected type into a string
+	//and appends it to the form.
+	function changeType(e)
+	{
+		$('<input type="hidden">').attr({
+    		   name: 'type',
+   		  value: $(e.srcElement.parentElement).attr("name"),
+		  }).appendTo('#postForm');	
+		$('#postForm').submit();
+	}
+</script>
