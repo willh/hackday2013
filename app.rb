@@ -24,6 +24,10 @@ get '/' do
   erb :index
 end
 
+get '/context' do
+  erb :context
+end
+
 get '/feedback' do
   session[FEEDBACK_KEY] ||= {}
   erb :feedback
