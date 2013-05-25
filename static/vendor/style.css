@@ -1,6 +1,14 @@
 .bottomMargin {
 	margin-bottom: 20px;
 }
+.typeIcon {
+	width:80px;
+}
+.selected {
+	border-color: red;
+	border-width: 1px;
+	border-style:solid;
+}
 @media (min-width: 979px){
 
 .launchIcon {
