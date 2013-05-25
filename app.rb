@@ -48,11 +48,23 @@ get '/feedback/:type' do
   end
 end
 
-get '/feedback/:type/notable' do
-  erb :index
+get '/feedback/:type/general' do
+  params[:good_points] = session[FEEDBACK_KEY][:good_points]
+  params[:bad_points] = session[FEEDBACK_KEY][:bad_points]
+  params[:general_comments] = session[FEEDBACK_KEY][:general_comments]
+
+  erb :general
 end
 
-get '/feedback/:type/notable/overall' do
+post '/feedback/:type/general' do
+  session[FEEDBACK_KEY][:good_points] = params[:good_points]
+  session[FEEDBACK_KEY][:bad_points] = params[:bad_points]
+  session[FEEDBACK_KEY][:general_comments] = params[:general_comments]
+
+  redirect "/feedback/#{session[FEEDBACK_KEY][:incident_type]}/general/overall"
+end
+
+get '/feedback/:type/general/overall' do
   erb :index
 end
 
