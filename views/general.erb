@@ -1,0 +1,38 @@
+<h1>General</h1>
+<form action="/feedback/<%= params[:type] %>/general" method='post' class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="good_points">Good Points</label>
+    <div class="controls">
+      <select name="good_points[]" multiple="multiple">
+        <% good_points_options.each do |o| %>
+        <option value="<%= o[:value]%>" <% if params[:good_points].include?(o[:value]) %>selected<% end %> >
+          <%= o[:name] %>
+        </option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="bad_points">Bad Points</label>
+    <div class="controls">
+      <select name="bad_points[]" multiple="multiple">
+        <% bad_points_options.each do |o| %>
+        <option value="<%= o[:value]%>" <% if params[:bad_points].include?(o[:value]) %>selected<% end %> >
+          <%= o[:name] %>
+        </option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="general_comments">Other Comments</label>
+    <div class="controls">
+      <textarea name="general_comments" rows="3"><%= params[:general_comments] %></textarea>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Next</button>
+    </div>
+  </div>
+</form>
