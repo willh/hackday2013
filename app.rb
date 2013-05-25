@@ -4,7 +4,7 @@ require 'sinatra'
 require 'dm-core'
 require 'dm-timestamps'  
 require 'dm-validations'  
-require 'dm-migration' 
+require 'dm-migrations' 
 
 FEEDBACK_KEY = "best.feedback"
 
