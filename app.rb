@@ -1,7 +1,7 @@
 
 require 'rubygems'
 require 'sinatra'
-require 'activerecord'
+require 'active_record'
 require 'sinatra/activerecord'
 
 FEEDBACK_KEY = "best.feedback"
