@@ -2,6 +2,13 @@
 require 'rubygems'
 require 'sinatra'
 
+FEEDBACK_KEY = "best.feedback"
+
+use Rack::Session::Cookie, :key => FEEDBACK_KEY,
+                           :path => '/',
+                           :expire_after => 3600, # In seconds
+                           :secret => 'nhs-hackday-best'
+
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
 end
@@ -15,10 +22,22 @@ get '/' do
 end
 
 get '/feedback' do
-  erb :index
+  session[FEEDBACK_KEY] ||= {}
+  erb :feedback
+end
+
+post '/feedback' do
+  puts params["incident-date"]
+  session[FEEDBACK_KEY] ||= {}
+  session[FEEDBACK_KEY][:date] = params[:date]
+  session[FEEDBACK_KEY][:type] = params[:type]
+
+  redirect "/feedback/#{params[:type]}"
 end
 
 get '/feedback/:type' do
+  puts "feedback/#{params[:type]}: #{session[FEEDBACK_KEY]}"
+
   case params[:type]
   when "drug-errors"
     erb :"drug-errors"
