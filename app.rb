@@ -5,6 +5,7 @@ require 'dm-core'
 require 'dm-timestamps'
 require 'dm-validations'
 require 'dm-migrations'
+require_relative 'admin.rb'
 
 FEEDBACK_KEY = "best.feedback"
 
