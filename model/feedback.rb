@@ -1,29 +1,20 @@
-class Feedback < ActiveRecord::Base
+class Feedback
+    include DataMapper::Resource
 
-    attr_accessor :location, :date, :time_of_day, :incident_type, :incident_points,
-     :incident_comments, :general_good_points, :general_bad_points, :general_comments,
-     :summary_severity, :summary_safety, :summary_priority, :apologised, :satisfied, :would_recommend
-
-    def initialize(location, date, time_of_day, incident_type, incident_points,
-     incident_comments, general_good_points, general_bad_points, general_comments,
-     summary_severity, summary_safety, summary_priority, apologised, satisfied, would_recommend)
-
-        @location = location
-        @date = date
-        @time_of_day = time_of_day
-        @incident_type = incident_type
-        @incident_points = incident_points
-        @incident_comments = incident_comments
-        @general_good_points = general_good_points
-        @general_bad_points = general_bad_points
-        @general_comments = general_comments
-        @summary_severity = summary_severity
-        @summary_safety = summary_safety
-        @summary_priority = summary_priority
-        @apologised = apologised
-        @satisfied = satisfied
-        @would_recommend = would_recommend
-
-    end
-
+    property id,                    Serial
+    property location,              String
+    property date,                  String
+    property time_of_day,           String
+    property incident_type,         String
+    property incident_points,       StringArray
+    property incident_comments,     String
+    property general_good_points,   StringArray
+    property general_bad_points,    StringArray
+    property general_comments,      String
+    property summary_severity,      String
+    property summary_safety,        String
+    property summary_priority,      String
+    property apologised,            String
+    property satisfied,             String
+    property would_recommend,       String
 end

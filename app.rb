@@ -1,8 +1,10 @@
 
 require 'rubygems'
 require 'sinatra'
-require 'active_record'
-require 'sinatra/activerecord'
+require 'dm-core'
+require 'dm-timestamps'  
+require 'dm-validations'  
+require 'dm-migration' 
 
 FEEDBACK_KEY = "best.feedback"
 
@@ -13,7 +15,9 @@ use Rack::Session::Cookie, :key => FEEDBACK_KEY,
 
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
-  set :database, ENV['DATABASE_URL'] || 'postgres://localhost/hackday2013'
+  DataMapper.setup(:default, (ENV['DATABASE_URL'] || 'postgres://localhost/hackday2013'))
+  #DataMapper.auto_migrate! # not needed until we need destructive migrations
+  DataMapper.auto_upgrade!
 end
 
 helpers do

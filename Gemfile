@@ -7,6 +7,5 @@ gem "rerun"
 gem 'rb-fsevent', '~> 0.9.1'
 
 gem "pg"
-gem "activerecord"
-gem "sinatra-activerecord"
-gem "activerecord-postgres-array"
+gem "data_mapper"
+gem "dm-pg-types"
