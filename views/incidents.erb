@@ -1,0 +1,26 @@
+<h1><%=params[:type_string]%></h1>
+<form action="/feedback/<%= params[:type] %>" method='post' class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label" for="incident_options">Reasons</label>
+    <div class="controls">
+      <select name="incident_options[]" multiple="multiple">
+        <% incident_options.each do |o| %>
+        <option value="<%= o[:value]%>" <% if params[:incident_options].include?(o[:value]) %>selected<% end %> >
+          <%= o[:name] %>
+        </option>
+        <% end %>
+      </select>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="general_comments">Other Comments</label>
+    <div class="controls">
+      <textarea name="incident_comments" rows="3"><%= params[:incident_comments] %></textarea>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Next</button>
+    </div>
+  </div>
+</form>
