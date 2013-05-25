@@ -29,74 +29,41 @@
   <div class="control-group">
     <label class="control-label">Have you already told us about what happened?</label>
     <div class="controls">
-      <label class="radio">
-        <input type="radio" name="told_us" value="yes">
-        Yes
-      </label>
-      <label class="radio">
-        <input type="radio" name="told_us" value="no">
-        No
-      </label>
+      <%= erb :"partials/radio_button", :locals => { :name => "told_us", :value => "yes", :param => params[:told_us], :label => "Yes" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "told_us", :value => "no", :param => params[:told_us], :label => "No" } %>
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label">How important do you think is patient safety to us?</label>
     <div class="controls">
-      <label class="radio">
-        <input type="radio" name="how_important_safety" value="red">
-        We don’t really care about your safety as long as no-one gets hurt
-      </label>
-      <label class="radio">
-        <input type="radio" name="how_important_safety" value="amber">
-        We do a lot when things go wrong trying to fix problems
-      </label>
-      <label class="radio">
-        <input type="radio" name="how_important_safety" value="green">
-        Safety is how we do business around here
-      </label>
+      <%= erb :"partials/radio_button", :locals => { :name => "how_important_safety", :value => "red", :param => params[:how_important_safety], :label => "We don’t really care about your safety as long as no-one gets hurt" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "how_important_safety", :value => "amber", :param => params[:how_important_safety], :label => "We do a lot when things go wrong trying to fix problems" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "how_important_safety", :value => "green", :param => params[:how_important_safety], :label => "Safety is how we do business around here" } %>
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label">Did we say we’re sorry?</label>
     <div class="controls">
-      <label class="radio">
-        <input type="radio" name="apologised" value="yes">
-        Yes
-      </label>
-      <label class="radio">
-        <input type="radio" name="apologised" value="no">
-        No
-      </label>
+      <%= erb :"partials/radio_button", :locals => { :name => "apologised", :value => "yes", :param => params[:happened_before], :label => "Yes" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "apologised", :value => "no", :param => params[:happened_before], :label => "No" } %>
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label">If yes: Were you satisfied with the way we said sorry to you?</label>
     <div class="controls">
-      <label class="radio">
-        <input type="radio" name="satisfied" value="yes">
-        Yes
-      </label>
-      <label class="radio">
-        <input type="radio" name="satisfied" value="no">
-        No
-      </label>
+      <%= erb :"partials/radio_button", :locals => { :name => "satisfied", :value => "yes", :param => params[:satisfied], :label => "Yes" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "satisfied", :value => "no", :param => params[:satisfied], :label => "No" } %>
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label">Would you recommend us to your friends and family?</label>
     <div class="controls">
-      <label class="radio">
-        <input type="radio" name="would_recommend" value="yes">
-        Yes
-      </label>
-      <label class="radio">
-        <input type="radio" name="would_recommend" value="no">
-        No
-      </label>
+      <%= erb :"partials/radio_button", :locals => { :name => "would_recommend", :value => "yes", :param => params[:would_recommend], :label => "Yes" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "would_recommend", :value => "no", :param => params[:would_recommend], :label => "No" } %>
     </div>
   </div>
 
