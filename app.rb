@@ -53,6 +53,10 @@ get '/feedback/:type/general' do
   params[:bad_points] = session[FEEDBACK_KEY][:bad_points]
   params[:general_comments] = session[FEEDBACK_KEY][:general_comments]
 
+  params[:good_points] ||= []
+  params[:bad_points] ||= []
+  params[:general_comments] ||= ""
+
   erb :general
 end
 
@@ -61,13 +65,31 @@ post '/feedback/:type/general' do
   session[FEEDBACK_KEY][:bad_points] = params[:bad_points]
   session[FEEDBACK_KEY][:general_comments] = params[:general_comments]
 
-  redirect "/feedback/#{session[FEEDBACK_KEY][:incident_type]}/general/overall"
+  redirect "/feedback/#{params[:type]}/general/overall"
 end
 
 get '/feedback/:type/general/overall' do
   erb :index
 end
 
-post '/feedback/:type' do
-  "posted!"
+get '/feedback/:type/general/overall' do
+  "posted"
+end
+
+def good_points_options
+  [
+    {:name => "Staff were friendly", :value => "friendy"},
+    {:name => "Staff were helpful", :value => "helpful"},
+    {:name => "Facilities were clean", :value => "clean"},
+    {:name => "Food was high quality", :value => "good_food_quality"}
+  ]
+end
+
+def bad_points_options
+  [
+    {:name => "Staff unfriendly", :value => "unfriendly"},
+    {:name => "Staff unhelpful", :value => "unhelpful"},
+    {:name => "Facilities unclean", :value => "unclean"},
+    {:name => "Food was poor quality", :value => "poor_food_quality"}
+  ]
 end
