@@ -6,4 +6,6 @@ gem "sinatra"
 gem "rerun"
 gem 'rb-fsevent', '~> 0.9.1'
 
-gem 'pg'
+gem "pg"
+gem "activerecord"
+gem "sinatra-activerecord"

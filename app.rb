@@ -1,9 +1,12 @@
 
 require 'rubygems'
 require 'sinatra'
+require 'activerecord'
+require 'sinatra/activerecord'
 
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
+  set :database, ENV['DATABASE_URL'] || 'postgres://localhost/hackday2013'
 end
 
 helpers do
