@@ -43,16 +43,24 @@ post '/feedback' do
 end
 
 get '/feedback/:type' do
-  puts "feedback/#{params[:type]}: #{session[FEEDBACK_KEY]}"
+  params[:incident_options] = session[FEEDBACK_KEY][:incident_points]
+  params[:incident_comments] = session[FEEDBACK_KEY][:incident_comments]
 
-  case params[:type]
-  when "drug-errors"
-    erb :"drug-errors"
-  when "miscommunication"
-    erb :"miscommunication"
-  else
-    raise ArgumentException("Unknown type: #{params[:type]}")
+  params[:incident_options] ||= []
+  params[:incident_comments] ||= ""
+
+  incident_type.each do |o|
+    if params[:type].include?(o[:value])
+      params[:type_string] = o[:description]
+    end
   end
+  erb :"incidents"
+end
+
+post '/feedback/:type' do
+  session[FEEDBACK_KEY][:incident_points] = params[:incident_options]
+  session[FEEDBACK_KEY][:incident_comments] = params[:incident_comments]
+  redirect "/feedback/#{params[:type]}/general"
 end
 
 get '/feedback/:type/general' do
@@ -122,5 +130,25 @@ def bad_points_options
     {:name => "Staff unhelpful", :value => "unhelpful"},
     {:name => "Facilities unclean", :value => "unclean"},
     {:name => "Food was poor quality", :value => "poor_food_quality"}
+  ]
+end
+
+
+def incident_options
+  [
+    {:name => "Wrong medicine was given", :value => "wrong_medicine"},
+    {:name => "Medicine was not given at all", :value => "no_medicine"},
+    {:name => "Too much or too little medicine was given", :value => "too_much_medicine"},
+    {:name => "Medicine was given at the wrong time<", :value => "wrong_time_medicine"},
+    {:name => "Medicine was given but patient had an allergy to this", :value => "allergy_not_noted"},
+    {:name => "No-one explained why the medicine was given", :value => "no_reason_medicine"},
+    {:name => "Plan for medicine at home was not clear", :value => "bad_communication"}
+  ]
+end
+
+def incident_type
+  [
+    {:description => "Drug errors", :value => "drug-error"},
+    {:description => "Miscommunication", :value => "miscommunication"}
   ]
 end
