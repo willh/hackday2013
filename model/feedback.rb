@@ -1,4 +1,4 @@
-class feedback
+class Feedback < ActiveRecord::Base
 
     attr_accessor :location, :date, :time_of_day, :incident_type, :incident_points,
      :incident_comments, :general_good_points, :general_bad_points, :general_comments,
