@@ -1,0 +1,108 @@
+<h1>Overall</h1>
+<form action="/feedback/<%= params[:type] %>/general/overall" method='post' class="form-horizontal">
+  <div class="control-group">
+    <label class="control-label">How bad did you think this was?</label>
+    <div class="controls">
+      <%= erb :"partials/radio_button", :locals => { :name => "severity", :value => "red", :param => params[:severity], :label => "This is still a safety risk to other patients" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "severity", :value => "amber", :param => params[:severity], :label => "This was a safety risk but it has been stopped" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "severity", :value => "green", :param => params[:severity], :label => "This could cause patient harm but it was stopped before anything could happen" } %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">How safe did you feel during your stay to us?</label>
+    <div class="controls">
+      <%= erb :"partials/radio_button", :locals => { :name => "safety", :value => "red", :param => params[:safety], :label => "Rarely felt safe as a patient" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "safety", :value => "amber", :param => params[:safety], :label => "Mostly felt safe as a patient" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "safety", :value => "green", :param => params[:safety], :label => "Always felt safe as a patient" } %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">Do you think this has happened to other patients before?</label>
+    <div class="controls">
+      <%= erb :"partials/radio_button", :locals => { :name => "happened_before", :value => "yes", :param => params[:happened_before], :label => "Yes" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "happened_before", :value => "no", :param => params[:happened_before], :label => "No" } %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">Have you already told us about what happened?</label>
+    <div class="controls">
+      <label class="radio">
+        <input type="radio" name="told_us" value="yes">
+        Yes
+      </label>
+      <label class="radio">
+        <input type="radio" name="told_us" value="no">
+        No
+      </label>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">How important do you think is patient safety to us?</label>
+    <div class="controls">
+      <label class="radio">
+        <input type="radio" name="how_important_safety" value="red">
+        We don’t really care about your safety as long as no-one gets hurt
+      </label>
+      <label class="radio">
+        <input type="radio" name="how_important_safety" value="amber">
+        We do a lot when things go wrong trying to fix problems
+      </label>
+      <label class="radio">
+        <input type="radio" name="how_important_safety" value="green">
+        Safety is how we do business around here
+      </label>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">Did we say we’re sorry?</label>
+    <div class="controls">
+      <label class="radio">
+        <input type="radio" name="apologised" value="yes">
+        Yes
+      </label>
+      <label class="radio">
+        <input type="radio" name="apologised" value="no">
+        No
+      </label>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">If yes: Were you satisfied with the way we said sorry to you?</label>
+    <div class="controls">
+      <label class="radio">
+        <input type="radio" name="satisfied" value="yes">
+        Yes
+      </label>
+      <label class="radio">
+        <input type="radio" name="satisfied" value="no">
+        No
+      </label>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">Would you recommend us to your friends and family?</label>
+    <div class="controls">
+      <label class="radio">
+        <input type="radio" name="would_recommend" value="yes">
+        Yes
+      </label>
+      <label class="radio">
+        <input type="radio" name="would_recommend" value="no">
+        No
+      </label>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Submit</button>
+    </div>
+  </div>
+</form>

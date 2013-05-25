@@ -13,7 +13,7 @@ use Rack::Session::Cookie, :key => FEEDBACK_KEY,
 
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
-  set :database, ENV['DATABASE_URL'] || 'postgres://localhost/hackday2013'
+  set :database, ENV['DATABASE_URL'] || 'postgres://postgres:root@localhost/hackday2013'
 end
 
 helpers do
@@ -76,11 +76,35 @@ post '/feedback/:type/general' do
 end
 
 get '/feedback/:type/general/overall' do
-  erb :index
+  params[:severity] = session[FEEDBACK_KEY][:severity]
+  params[:safety] = session[FEEDBACK_KEY][:safety]
+  params[:happened_before] = session[FEEDBACK_KEY][:happened_before]
+  params[:told_us] = session[FEEDBACK_KEY][:told_us]
+  params[:how_important_safety] = session[FEEDBACK_KEY][:how_important_safety]
+  params[:apologised] = session[FEEDBACK_KEY][:apologised]
+  params[:satisfied] = session[FEEDBACK_KEY][:satisfied]
+  params[:would_recommend] = session[FEEDBACK_KEY][:would_recommend]
+
+  erb :overall
 end
 
-get '/feedback/:type/general/overall' do
-  "posted"
+post '/feedback/:type/general/overall' do
+  session[FEEDBACK_KEY][:severity] = params[:severity]
+  session[FEEDBACK_KEY][:safety] = params[:safety]
+  session[FEEDBACK_KEY][:happened_before] = params[:happened_before]
+  session[FEEDBACK_KEY][:told_us] = params[:told_us]
+  session[FEEDBACK_KEY][:how_important_safety] = params[:how_important_safety]
+  session[FEEDBACK_KEY][:apologised] = params[:apologised]
+  session[FEEDBACK_KEY][:satisfied] = params[:satisfied]
+  session[FEEDBACK_KEY][:would_recommend] = params[:would_recommend]
+
+  feedback_ref = save_feedback(session[FEEDBACK_KEY])
+
+  erb :finished, :locals => { :feedback_ref => feedback_ref }
+end
+
+def save_feedback(feedback_hash)
+  "1234"
 end
 
 def good_points_options
