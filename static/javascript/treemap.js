@@ -47,6 +47,8 @@ best.charts.treemap = best.charts.treemap || (function() {
       var that = this;
       console.log('draw treemap!');
 
+      var node_id = this.node.id;
+
       var margin = {top: 40, right: 10, bottom: 10, left: 10},
           width = w - margin.left - margin.right,
           height = h - margin.top - margin.bottom;
@@ -60,9 +62,9 @@ best.charts.treemap = best.charts.treemap || (function() {
 
       d3.json(that.opts.jsonUrl, function(error, root) {
 
-        var header = d3.select("#treemap").append("h2").text(root.name + ' - ' + root.value)
+        var header = d3.select("#" + node_id).append("h2").text(root.name + ' - ' + root.value)
 
-        var div = d3.select("#treemap").append("div")
+        var div = d3.select("#" + node_id).append("div")
           .style("position", "relative")
           .style("width", (width + margin.left + margin.right) + "px")
           .style("height", (height + margin.top + margin.bottom) + "px")

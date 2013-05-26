@@ -1,5 +1,15 @@
 <h1>Admin</h1>
-<div id="treemap" data-url="/admin/api/incidents_by_location"></div>
+
+<div>
+  <a href="#" class="hide_show" data-hide-show-id="treemap" data-hide-show-group="main_charts">Incidents by location</a> |
+  <a href="#" class="hide_show" data-hide-show-id="ward21" data-hide-show-group="main_charts">Ward 21</a> |
+  <a href="#" class="hide_show" data-hide-show-id="ward31" data-hide-show-group="main_charts">Ward 31</a>
+</div>
+
+<div id="treemap" class="treemap main_charts" data-url="/admin/api/incidents_by_location"></div>
+<div id="ward21" class="treemap hide main_charts" data-url="/admin/api/incidents_by_location/ward_21"></div>
+<div id="ward31" class="treemap hide main_charts" data-url="/admin/api/incidents_by_location/ward_31"></div>
+
 <legend>High Severity</legend>
 
 <table class="table table-bordered table-striped table-hover">
@@ -7,9 +17,9 @@
 	<th>Location</th>
 	<th>Incident Type</th>
 	<th>Apologised</th>
-	
+
 	<%  incidents.each do |o| %>
-		 <% if o[:severity] =="High" %>
+		 <% if o[:severity] =="red" %>
 			<tr class="error" id="<%= o[:id] %>" onclick="viewDetail(event);">
 				<td style="width:25%"><%= o[:severity] %></td>
 				<td style="width:25%"><%= o[:location] %></td>
@@ -25,9 +35,9 @@
 	<th>Location</th>
 	<th>Incident Type</th>
 	<th>Apologised</th>
-	
+
 	<% incidents.each do |o| %>
-	 <% if o[:severity] =="Medium" %>
+	 <% if o[:severity] =="amber" %>
 	<tr class="warning" id="<%= o[:id] %>" onclick="viewDetail(event);">
 		<td style="width:25%"><%= o[:severity] %></td>
 		<td style="width:25%"><%= o[:location] %></td>
@@ -43,9 +53,9 @@
 	<th>Location</th>
 	<th>Incident Type</th>
 	<th>Apologised</th>
-	
+
 	<% incidents.each do |o| %>
-	 <% if o[:severity] =="Low" %>
+	 <% if o[:severity] =="green" %>
 	<tr class="success" id="<%= o[:id] %>" onclick="viewDetail(event);">
 		<td style="width:25%"><%= o[:severity] %></td>
 		<td style="width:25%"><%= o[:location] %></td>

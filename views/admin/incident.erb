@@ -4,26 +4,54 @@
 <div class="tabbable">
   <ul class="nav nav-tabs">
     <li class="active"><a href="#pane1" data-toggle="tab">Summary</a></li>
-    <li><a href="#pane2" data-toggle="tab">Positive Points</a></li>
-    <li><a href="#pane3" data-toggle="tab">Negative Points</a></li>
+    <li><a href="#pane2" data-toggle="tab">Incident Comments</a></li>
+    <li><a href="#pane3" data-toggle="tab">Feedback</a></li>
   </ul>
   <div class="tab-content">
     <div id="pane1" class="tab-pane active">
-      <div class="span2">
-      	<h4><u>Location</u></h4>
-	<%= params[:incident][:location] %>
+      <div class="span3">
+      	<h4>Location</h4>
+	<%= params[:incidentReported][:location]%>
+        <h4>Time Of Day</h4>
+        <%= params[:incidentReported][:time_of_day]%>
+      <h4>Incident Type</h4>
+        <%= params[:incidentReported][:type]%>
+        <h4>Occured Before?</h4>
+        <%= params[:incidentReported][:happened_before]%> 
+        <h4>Satisfied?</h4>
+        <%= params[:incidentReported][:satisfied]%>
      </div>
-     <div class="span2">
-     	 <h4><u>Severity</u></h4>
-	<p><%= params[:incident][:incident_severity] %></p>
+     <div class="span3">
+     	 <h4>Severity</h4>
+        <%= params[:incidentReported][:severity]%>
+        <h4>Safety</h4>
+        <%= params[:incidentReported][:safety]%>
+        <h4>Told Us?</h4>
+        <%= params[:incidentReported][:told_us]%>
+        <h4>How important So Safety</h4>
+        <%= params[:incidentReported][:how_important_safety]%>
+        <h4>Would Recommend?</h4>
+        <%= params[:incidentReported][:would_recommend]%>
+        
+        
+
     </div>
     </div>
-    <div id="pane2" class="tab-pane">
- 
+     <div id="pane2" class="tab-pane">
+      <%= params[:incidentReported][:incident_comments] %></br>
+      <%= params[:incidentReported][:general_comments] %>
+
     </div>
     <div id="pane3" class="tab-pane">
-      <h4>Pane 3 Content</h4>
-    </div>
+      <legend>Positive Feedback</legend>
+     <% params[:incidentReported][:good_points].each do |t| %>
+      <li><%= t %></li>
+    <% end %></br>
+          <legend>Negative Feedback</legend>
+<% params[:incidentReported][:bad_points].each do |t| %>
+  <li><%= t %></li>
+<% end %>
+   </div>
   </div><!-- /.tab-content -->
 </div>
 </div>
