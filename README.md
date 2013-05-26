@@ -29,10 +29,10 @@ A feedback object is created and saved when an incident is reported using the ap
     time_of_day            String
     type                   String
     incident_points        Array of String
-    incident_comments      String
+    incident_comments      Text
     good_points            Array of String
     bad_points             Array of String
-    general_comments       String
+    general_comments       Text
     severity               String
     safety                 String
     happened_before        String
