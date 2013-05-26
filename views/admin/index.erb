@@ -1,5 +1,7 @@
 <h1>Admin</h1>
-<div id="treemap" data-url="/admin/api/incidents_by_location"></div>
+
+<div id="treemap" class="treemap" data-url="/admin/api/incidents_by_location"></div>
+
 <legend>High Severity</legend>
 
 <table class="table table-bordered table-striped table-hover">
@@ -7,7 +9,7 @@
 	<th>Location</th>
 	<th>Incident Type</th>
 	<th>Apologised</th>
-	
+
 	<%  incidents.each do |o| %>
 		 <% if o[:severity] =="High" %>
 			<tr class="error" id="<%= o[:id] %>" onclick="viewDetail(event);">
@@ -25,7 +27,7 @@
 	<th>Location</th>
 	<th>Incident Type</th>
 	<th>Apologised</th>
-	
+
 	<% incidents.each do |o| %>
 	 <% if o[:severity] =="Medium" %>
 	<tr class="warning" id="<%= o[:id] %>" onclick="viewDetail(event);">
@@ -43,7 +45,7 @@
 	<th>Location</th>
 	<th>Incident Type</th>
 	<th>Apologised</th>
-	
+
 	<% incidents.each do |o| %>
 	 <% if o[:severity] =="Low" %>
 	<tr class="success" id="<%= o[:id] %>" onclick="viewDetail(event);">
