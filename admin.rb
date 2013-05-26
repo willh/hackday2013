@@ -1,7 +1,9 @@
 require 'json'
 
 get '/admin' do
-  erb :"admin/index", :layout => :admin_layout
+incidents = get_all_feedback
+puts "incidents: #{incidents.count}"
+  erb :"admin/index", :layout => :admin_layout, :locals => { :incidents => incidents }
 end
 
 get '/admin/location/:location' do
@@ -9,9 +11,13 @@ get '/admin/location/:location' do
 end
 
 get '/admin/incident/:incident' do
+dummy_issues.each do |o|
+    if o[:id] == params[:incident]
+      params[:incident] = o
+    end
+   end
   erb :"admin/incident", :layout => :admin_layout
 end
-
 get '/admin/api/incidents_by_location' do
   {
     :name => 'Total incidents by location',

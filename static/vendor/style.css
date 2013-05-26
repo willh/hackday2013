@@ -1,0 +1,35 @@
+.bottomMargin {
+	margin-bottom: 20px;
+}
+.typeIcon {
+	width:80px;
+}
+.selected {
+	border-color: red;
+	border-width: 1px;
+	border-style:solid;
+}
+@media (min-width: 979px){
+
+.launchIcon {
+		width:128px;
+		height:128px;
+	}
+}
+@media only screen(max-width: 979px){
+	body {
+		padding-top: 0px !important;
+	}
+	.launchIcon {
+		max-width: 25%;
+		max-height: 100px;
+	}
+	.mobile {
+		display:none;
+	}
+	.launchIconText {
+		float:right;
+		max-width:65%;
+		min-width:65%;
+	}
+}

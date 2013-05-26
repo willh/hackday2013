@@ -1,1 +1,30 @@
-<h1>Incident Details</h1>
+<legend>Incident Details</legend>
+<div class="span1"></div>
+<div class="span10">
+<div class="tabbable">
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#pane1" data-toggle="tab">Summary</a></li>
+    <li><a href="#pane2" data-toggle="tab">Positive Points</a></li>
+    <li><a href="#pane3" data-toggle="tab">Negative Points</a></li>
+  </ul>
+  <div class="tab-content">
+    <div id="pane1" class="tab-pane active">
+      <div class="span2">
+      	<h4><u>Location</u></h4>
+	<%= params[:incident][:location] %>
+     </div>
+     <div class="span2">
+     	 <h4><u>Severity</u></h4>
+	<p><%= params[:incident][:incident_severity] %></p>
+    </div>
+    </div>
+    <div id="pane2" class="tab-pane">
+ 
+    </div>
+    <div id="pane3" class="tab-pane">
+      <h4>Pane 3 Content</h4>
+    </div>
+  </div><!-- /.tab-content -->
+</div>
+</div>
+<div class="span1"></div>
