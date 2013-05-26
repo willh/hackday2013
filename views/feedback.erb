@@ -27,16 +27,12 @@
       <div class="span6">
       <legend>Incident Type</legend>
         <label class="radio">
-          <input type="radio" class="launch-radio" name="optionsRadios[]" id="optionsRadios1" value="miscommunication" checked>
-          <img class="launchIcon" src="/vendor/smiley_face.png"/>Tell us what made you feel safe whilst in our care!
+          <input type="radio" class="launch-radio" name="optionsRadios[]" id="optionsRadios2" value="drug-error">
+          <img class="launchIcon" src="/vendor/syringe_icon.png"/>Do you feel that there was an issue with your medicine?
         </label>
         <label class="radio">
           <input type="radio" class="launch-radio" name="optionsRadios[]" id="optionsRadios2" value="miscommunication">
           <img class="launchIcon" src="/vendor/miscommunication.png"/>Do you feel there was a miscommunication between you and our staff?
-        </label>
-        <label class="radio">
-          <input type="radio" class="launch-radio" name="optionsRadios[]" id="optionsRadios2" value="drug-error">
-          <img class="launchIcon" src="/vendor/syringe_icon.png"/>Do you feel that there was an issue with your medicine?
         </label>
         <div class="control-group">
           <div class="controls">
@@ -61,7 +57,7 @@
       $('<input type="hidden">').attr({
             name: 'type',
            value: incidentType,
-        }).appendTo('#postForm');   
+        }).appendTo('#postForm');
       $('#postForm').submit();
    }
 </script>
