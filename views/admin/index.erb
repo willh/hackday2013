@@ -19,7 +19,7 @@
 	<th>Apologised</th>
 
 	<%  incidents.each do |o| %>
-		 <% if o[:severity] =="High" %>
+		 <% if o[:severity] =="red" %>
 			<tr class="error" id="<%= o[:id] %>" onclick="viewDetail(event);">
 				<td style="width:25%"><%= o[:severity] %></td>
 				<td style="width:25%"><%= o[:location] %></td>
@@ -37,7 +37,7 @@
 	<th>Apologised</th>
 
 	<% incidents.each do |o| %>
-	 <% if o[:severity] =="Medium" %>
+	 <% if o[:severity] =="amber" %>
 	<tr class="warning" id="<%= o[:id] %>" onclick="viewDetail(event);">
 		<td style="width:25%"><%= o[:severity] %></td>
 		<td style="width:25%"><%= o[:location] %></td>
@@ -55,7 +55,7 @@
 	<th>Apologised</th>
 
 	<% incidents.each do |o| %>
-	 <% if o[:severity] =="Low" %>
+	 <% if o[:severity] =="green" %>
 	<tr class="success" id="<%= o[:id] %>" onclick="viewDetail(event);">
 		<td style="width:25%"><%= o[:severity] %></td>
 		<td style="width:25%"><%= o[:location] %></td>

@@ -11,9 +11,10 @@ get '/admin/location/:location' do
 end
 
 get '/admin/incident/:incident' do
-dummy_issues.each do |o|
-    if o[:id] == params[:incident]
-      params[:incident] = o
+incidents = get_all_feedback
+incidents.each do |o|
+     if o[:id].to_s == params[:incident].to_s
+      params[:incidentReported] = o
     end
    end
   erb :"admin/incident", :layout => :admin_layout
