@@ -2,7 +2,7 @@
 
 ## Introduction
 
-BEST - Bedside Event Reporting Tool
+BEST - Bedside Event Safety Tool
 
 A mobile friendly web site for patients and families to report safety
 concerns.
