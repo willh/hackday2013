@@ -2,6 +2,7 @@ require './model/feedback'
 require 'rubygems'
 require 'sinatra'
 require 'data_mapper' 
+require_relative 'admin.rb'
 
 FEEDBACK_KEY = "best.feedback"
 
@@ -44,6 +45,14 @@ get '/' do
   erb :index
 end
 
+get '/about' do
+  erb :about
+end
+
+get '/contact' do
+  erb :contact
+end
+
 get '/context' do
   erb :context
 end
@@ -56,7 +65,7 @@ end
 post '/feedback' do
   puts params["incident-date"]
   session[FEEDBACK_KEY] ||= {}
-  session[FEEDBACK_KEY][:date] = params[:date]
+  session[FEEDBACK_KEY][:date] = params[:type]
   session[FEEDBACK_KEY][:type] = params[:type]
 
   redirect "/feedback/#{params[:type]}"
