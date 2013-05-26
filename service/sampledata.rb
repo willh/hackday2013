@@ -16,14 +16,14 @@ class SampleData
             :good_points => ["friendly", "helpful"], 
             :bad_points => ["unclean", "poor_food_quality"], 
             :general_comments => "The staff were very nice", 
-            :severity => "Low", 
-            :safety => "Low", 
-            :happened_before => "No",
-            :told_us => "Yes",
-            :how_important_safety => "Medium",
-            :apologised => "Yes", 
-            :satisfied => "Yes", 
-            :would_recommend => "Maybe"
+            :severity => "green", 
+            :safety => "green", 
+            :happened_before => "no",
+            :told_us => "yes",
+            :how_important_safety => "amber",
+            :apologised => "yes", 
+            :satisfied => "yes", 
+            :would_recommend => "yes"
         )
 
         sampledata << Feedback.create(
@@ -36,14 +36,14 @@ class SampleData
             :good_points => ["clean", "helpful"], 
             :bad_points => ["unfriendly"], 
             :general_comments => "The ward is very clean", 
-            :severity => "Low", 
-            :safety => "Low", 
-            :happened_before => "Yes",
-            :told_us => "No",
-            :how_important_safety => "Low",
-            :apologised => "Yes", 
-            :satisfied => "Yes", 
-            :would_recommend => "No"
+            :severity => "green", 
+            :safety => "green", 
+            :happened_before => "yes",
+            :told_us => "no",
+            :how_important_safety => "green",
+            :apologised => "yes", 
+            :satisfied => "yes", 
+            :would_recommend => "no"
         )
 
         sampledata << Feedback.create(
@@ -56,14 +56,14 @@ class SampleData
             :good_points => ["helpful", "good_food_quality"], 
             :bad_points => ["unclean"], 
             :general_comments => "The ward is not clean, there are overflowing rubbish bins at the doorway", 
-            :severity => "Medium", 
-            :safety => "Medium", 
-            :happened_before => "No",
-            :told_us => "Yes",
-            :how_important_safety => "High",
-            :apologised => "Yes", 
-            :satisfied => "Yes", 
-            :would_recommend => "No"
+            :severity => "red", 
+            :safety => "amber", 
+            :happened_before => "no",
+            :told_us => "yes",
+            :how_important_safety => "red",
+            :apologised => "yes", 
+            :satisfied => "yes", 
+            :would_recommend => "no"
         )
 
         sampledata << Feedback.create(
@@ -72,18 +72,18 @@ class SampleData
             :time_of_day => "Evening", 
             :type => "miscommunication", 
             :incident_points => ["bad_communication"], 
-            :incident_comments => "Nobody explained to me why they were performing the tests", 
+            :incident_comments => "nobody explained to me why they were performing the tests", 
             :good_points => ["friendly", "clean"], 
             :bad_points => [], 
             :general_comments => "Long waiting times", 
-            :severity => "Low", 
-            :safety => "Medium", 
-            :happened_before => "No",
-            :told_us => "No",
-            :how_important_safety => "Low",
-            :apologised => "No", 
-            :satisfied => "No", 
-            :would_recommend => "No"
+            :severity => "green", 
+            :safety => "amber", 
+            :happened_before => "no",
+            :told_us => "no",
+            :how_important_safety => "green",
+            :apologised => "no", 
+            :satisfied => "no", 
+            :would_recommend => "no"
         )
 
         sampledata << Feedback.create(
@@ -96,14 +96,54 @@ class SampleData
             :good_points => ["helpful", "friendly"], 
             :bad_points => ["poor_food_quality"], 
             :general_comments => "Meals are not good quality, limited vegeterian options", 
-            :severity => "Medium", 
-            :safety => "Medium", 
-            :happened_before => "No",
-            :told_us => "Yes",
-            :how_important_safety => "High",
-            :apologised => "Yes", 
-            :satisfied => "Yes", 
-            :would_recommend => "Yes"
+            :severity => "amber", 
+            :safety => "amber", 
+            :happened_before => "no",
+            :told_us => "yes",
+            :how_important_safety => "red",
+            :apologised => "yes", 
+            :satisfied => "yes", 
+            :would_recommend => "yes"
+        )
+
+        sampledata << Feedback.create(
+            :location => "Ward 22", 
+            :date => "2013-05-25 11:30:40", 
+            :time_of_day => "Night", 
+            :type => "drug-error", 
+            :incident_points => ["too_much_medicine"], 
+            :incident_comments => "I was given pain killers twice but I don't think I need them any more", 
+            :good_points => ["helpful", "friendly"], 
+            :bad_points => ["poor_food_quality"], 
+            :general_comments => "Nurses friendly and gave me information on all the procedures", 
+            :severity => "green", 
+            :safety => "amber", 
+            :happened_before => "no",
+            :told_us => "yes",
+            :how_important_safety => "red",
+            :apologised => "yes", 
+            :satisfied => "yes", 
+            :would_recommend => "yes"
+        )
+
+        sampledata << Feedback.create(
+            :location => "Ward 20", 
+            :date => "2013-05-15 11:30:40", 
+            :time_of_day => "Night", 
+            :type => "drug-error", 
+            :incident_points => ["allergy_not_noted"], 
+            :incident_comments => "My daughter was given pennicillin but she is allergic to pennicillin. She was not given an allergy band upon entry.", 
+            :good_points => ["helpful", "friendly"], 
+            :bad_points => [], 
+            :general_comments => "We were given a general information leaflet but not asked about allergies", 
+            :severity => "red", 
+            :safety => "amber", 
+            :happened_before => "no",
+            :told_us => "yes",
+            :how_important_safety => "amber",
+            :apologised => "yes", 
+            :satisfied => "yes", 
+            :would_recommend => "yes"
         )
 
         sampledata.each do |sample|
