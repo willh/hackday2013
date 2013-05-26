@@ -17,6 +17,42 @@ By identifying commonly reported issues hospitals can target areas for
 improvement, helping patient care and saving time and money from 
 being wasted on reoccuring incidents.
 
+## Application Flow
+
+    Main Application
+        Submit Feedback
+            Incident Feeedback Type
+            Incident Feedback Details
+            General Feedback
+            Overall Summary
+        About the App
+        Urgent Contact
+
+    Administration
+        Incident List
+            Incident Detail
+            Location Type Breakdown
+
+## Colophon
+
+####Application Language####
+Ruby
+
+####Web Framework####
+Sinatra
+
+####Data Persistence####
+PostreSQL
+
+####Data Mapping####
+DataMapper
+
+####Web UI####
+Twitter Bootstrap
+
+####Data Visualisation####
+D3.js
+
 ## Data Model
 
 A feedback object is created and saved when an incident is reported using the application. The feedback object currently has the following flat structure:
