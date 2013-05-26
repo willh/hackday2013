@@ -16,7 +16,7 @@
 		height:128px;
 	}
 }
-@media (max-width: 979px){
+@media only screen(max-width: 979px){
 	body {
 		padding-top: 0px !important;
 	}
@@ -32,18 +32,4 @@
 		max-width:65%;
 		min-width:65%;
 	}
-}
-
-/* Treemap */
-.node {
-  border: solid 1px white;
-  line-height: 12px;
-  overflow: hidden;
-  position: absolute;
-}
-.node span {
-  display: inline-block;
-  padding: 5px;
-  color: white;
-  font-weight: bold;
 }

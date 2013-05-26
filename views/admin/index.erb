@@ -1,1 +1,63 @@
 <h1>Admin</h1>
+<div id="treemap" data-url="/admin/api/incidents_by_location"></div>
+<legend>High Severity</legend>
+
+<table class="table table-bordered table-striped table-hover">
+	<th>Severity</th>
+	<th>Location</th>
+	<th>Incident Type</th>
+	<th>Apologised</th>
+	
+	<%  incidents.each do |o| %>
+		 <% if o[:severity] =="High" %>
+			<tr class="error" id="<%= o[:id] %>" onclick="viewDetail(event);">
+				<td style="width:25%"><%= o[:severity] %></td>
+				<td style="width:25%"><%= o[:location] %></td>
+				<td style="width:25%"><%= o[:type] %></td>
+				<td style="width:25%"><%= o[:apologised] %></td>
+			</tr>
+		<% end %>
+       	<% end %>
+    </table>
+     <legend>Medium Severity</legend>
+	<table class="table table-bordered table-striped table-hover">
+	<th>Severity</th>
+	<th>Location</th>
+	<th>Incident Type</th>
+	<th>Apologised</th>
+	
+	<% incidents.each do |o| %>
+	 <% if o[:severity] =="Medium" %>
+	<tr class="warning" id="<%= o[:id] %>" onclick="viewDetail(event);">
+		<td style="width:25%"><%= o[:severity] %></td>
+		<td style="width:25%"><%= o[:location] %></td>
+		<td style="width:25%"><%= o[:type] %></td>
+		<td style="width:25%"><%= o[:apologised] %></td>
+	</tr>
+	<% end %>
+        <% end %>
+    </table>
+    <legend>Low Severity</legend>
+	<table class="table table-bordered table-striped table-hover">
+	<th>Severity</th>
+	<th>Location</th>
+	<th>Incident Type</th>
+	<th>Apologised</th>
+	
+	<% incidents.each do |o| %>
+	 <% if o[:severity] =="Low" %>
+	<tr class="success" id="<%= o[:id] %>" onclick="viewDetail(event);">
+		<td style="width:25%"><%= o[:severity] %></td>
+		<td style="width:25%"><%= o[:location] %></td>
+		<td style="width:25%"><%= o[:type] %></td>
+		<td style="width:25%"><%= o[:apologised] %></td>
+	</tr>
+	<% end %>
+        <% end %>
+    </table>
+    <script>
+    function viewDetail(e)
+    {
+    	window.location ="admin/incident/"+e.srcElement.parentElement.id;
+    }
+    </script>
