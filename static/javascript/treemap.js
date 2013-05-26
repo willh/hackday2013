@@ -77,7 +77,8 @@ best.charts.treemap = best.charts.treemap || (function() {
             this.style("left", function(d) { return d.x + "px"; })
                 .style("top", function(d) { return d.y + "px"; })
                 .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
-                .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
+                .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; })
+                .style("cursor", function(d) { return d.url ? "pointer" : ""; });
           })
           .on("click", function(d) {
             if (d.url) {
