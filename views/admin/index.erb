@@ -13,54 +13,62 @@
 <legend>High Severity</legend>
 
 <table class="table table-bordered table-striped table-hover">
-	<th>Severity</th>
+	<th>Risk To Safety</th>
 	<th>Location</th>
 	<th>Incident Type</th>
-	<th>Apologised</th>
+	<th>Have We Apologised?</th>
+	<th>Patient Satisfied?</th>
 
 	<%  incidents.each do |o| %>
 		 <% if o[:severity] =="red" %>
 			<tr class="error" id="<%= o[:id] %>" onclick="viewDetail(event);">
-				<td style="width:25%"><%= o[:severity] %></td>
-				<td style="width:25%"><%= o[:location] %></td>
-				<td style="width:25%"><%= o[:type] %></td>
-				<td style="width:25%"><%= o[:apologised] %></td>
+				<td style="width:20%"><%= o[:safety] %></td>
+				<td style="width:20%"><%= o[:location] %></td>
+				<td style="width:20%"><%= o[:type] %></td>
+				<td style="width:20%"><%= o[:apologised] %></td>
+				<td style="width:20%"><%= o[:satisfied] %></td>
+
 			</tr>
 		<% end %>
        	<% end %>
     </table>
      <legend>Medium Severity</legend>
 	<table class="table table-bordered table-striped table-hover">
-	<th>Severity</th>
+	<th>Risk To Safety</th>
 	<th>Location</th>
 	<th>Incident Type</th>
-	<th>Apologised</th>
+	<th>Have We Apologised?</th>
+	<th>Patient Satisfied?</th>
 
 	<% incidents.each do |o| %>
 	 <% if o[:severity] =="amber" %>
 	<tr class="warning" id="<%= o[:id] %>" onclick="viewDetail(event);">
-		<td style="width:25%"><%= o[:severity] %></td>
-		<td style="width:25%"><%= o[:location] %></td>
-		<td style="width:25%"><%= o[:type] %></td>
-		<td style="width:25%"><%= o[:apologised] %></td>
+		<td style="width:20%"><%= o[:safety] %></td>
+		<td style="width:20%"><%= o[:location] %></td>
+		<td style="width:20%"><%= o[:type] %></td>
+		<td style="width:20%"><%= o[:apologised] %></td>
+		<td style="width:20%"><%= o[:satisfied] %></td>
 	</tr>
 	<% end %>
         <% end %>
     </table>
     <legend>Low Severity</legend>
 	<table class="table table-bordered table-striped table-hover">
-	<th>Severity</th>
+	<th>Risk To Safety</th>
 	<th>Location</th>
 	<th>Incident Type</th>
-	<th>Apologised</th>
+	<th>Have We Apologised?</th>
+	<th>Patient Satisfied?</th>
 
 	<% incidents.each do |o| %>
 	 <% if o[:severity] =="green" %>
 	<tr class="success" id="<%= o[:id] %>" onclick="viewDetail(event);">
-		<td style="width:25%"><%= o[:severity] %></td>
-		<td style="width:25%"><%= o[:location] %></td>
-		<td style="width:25%"><%= o[:type] %></td>
-		<td style="width:25%"><%= o[:apologised] %></td>
+
+		<td style="width:20%"><%= o[:safety] %></td>
+		<td style="width:20%"><%= o[:location] %></td>
+		<td style="width:20%"><%= o[:type] %></td>
+		<td style="width:20%"><%= o[:apologised] %></td>
+		<td style="width:20%"><%= o[:satisfied] %></td>
 	</tr>
 	<% end %>
         <% end %>
