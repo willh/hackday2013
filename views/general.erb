@@ -1,28 +1,28 @@
-<h1>General</h1>
+<div class="page-header">
+  <h1>General</h1>
+</div>
 <form action="/feedback/<%= params[:type] %>/general" method='post' class="form-horizontal">
   <div class="control-group">
     <label class="control-label" for="good_points">Good Points</label>
+    <% good_points_options.each do |o| %>
     <div class="controls">
-      <select name="good_points[]" multiple="multiple">
-        <% good_points_options.each do |o| %>
-        <option value="<%= o[:value]%>" <% if params[:good_points].include?(o[:value]) %>selected<% end %> >
-          <%= o[:name] %>
-        </option>
-        <% end %>
-      </select>
+      <label class="checkbox" for="<%= o[:value]%>">   
+          <input type="checkbox" style="vertical-align:top; margin-top:3px;" name="good_points[]" id="<%= o[:value]%>" value="<%= o[:value]%>" <% if params[:good_points].include?(o[:value]) %>checked<% end %> >
+          </input><%= o[:name] %>
+        </label>
     </div>
+    <% end %>
   </div>
   <div class="control-group">
-    <label class="control-label" for="bad_points">Bad Points</label>
+    <label class="control-label" for="good_points">Bad Points</label>
+    <% bad_points_options.each do |o| %>
     <div class="controls">
-      <select name="bad_points[]" multiple="multiple">
-        <% bad_points_options.each do |o| %>
-        <option value="<%= o[:value]%>" <% if params[:bad_points].include?(o[:value]) %>selected<% end %> >
-          <%= o[:name] %>
-        </option>
-        <% end %>
-      </select>
+      <label class="checkbox" for="<%= o[:value]%>">   
+          <input type="checkbox" style="vertical-align:top; margin-top:3px;" name="bad_points[]" id="<%= o[:value]%>" value="<%= o[:value]%>" <% if params[:bad_points].include?(o[:value]) %>checked<% end %> >
+          </input><%= o[:name] %>
+        </label>
     </div>
+    <% end %>
   </div>
   <div class="control-group">
     <label class="control-label" for="general_comments">Other Comments</label>

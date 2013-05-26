@@ -1,75 +1,117 @@
-<h1>Overall</h1>
-<form action="/feedback/<%= params[:type] %>/general/overall" method='post' class="form-horizontal">
-  <div class="control-group">
+<div class="page-header">
+  <h1>Overall</h1>
+</div>
+<form action="/feedback/<%= params[:type] %>/general/overall" method='post' id="overall_form" class="form-horizontal">
+<div class="question-holder">
+  <div class="control-group form-inline">
     <label class="control-label">How bad did you think this was?</label>
     <div class="controls">
-      <%= erb :"partials/radio_button", :locals => { :name => "severity", :value => "red", :param => params[:severity], :label => "This is still a safety risk to other patients" } %>
-      <%= erb :"partials/radio_button", :locals => { :name => "severity", :value => "amber", :param => params[:severity], :label => "This was a safety risk but it has been stopped" } %>
-      <%= erb :"partials/radio_button", :locals => { :name => "severity", :value => "green", :param => params[:severity], :label => "This could cause patient harm but it was stopped before anything could happen" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "severity", :value => "red", :param => params[:severity], :label => "<img src='/vendor/Box_Red.png' class='option-image' alt='This is still a safety risk to other patients'>" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "severity", :value => "amber", :param => params[:severity], :label => "<img src='/vendor/Box_Orange.png' class='option-image' alt='This was a safety risk but it has been stopped'>" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "severity", :value => "green", :param => params[:severity], :label => "<img src='/vendor/Box_Green.png' class='option-image' alt='This could cause patient harm but it was stopped before anything could happen'>" } %>
     </div>
   </div>
+  <div class="control-group chosen-holder" style="display:none">
+    <div class="chosen-label"><label></label></div>
+  </div>
+</div>
 
-  <div class="control-group">
+<div class="question-holder">
+  <div class="control-group form-inline">
     <label class="control-label">How safe did you feel during your stay to us?</label>
     <div class="controls">
-      <%= erb :"partials/radio_button", :locals => { :name => "safety", :value => "red", :param => params[:safety], :label => "Rarely felt safe as a patient" } %>
-      <%= erb :"partials/radio_button", :locals => { :name => "safety", :value => "amber", :param => params[:safety], :label => "Mostly felt safe as a patient" } %>
-      <%= erb :"partials/radio_button", :locals => { :name => "safety", :value => "green", :param => params[:safety], :label => "Always felt safe as a patient" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "safety", :value => "red", :param => params[:safety], :label => "<img src='/vendor/Box_Red.png' class='option-image' alt='Rarely felt safe as a patient'>" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "safety", :value => "amber", :param => params[:safety], :label => "<img src='/vendor/Box_Orange.png' class='option-image' alt='Mostly felt safe as a patient'>" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "safety", :value => "green", :param => params[:safety], :label => "<img src='/vendor/Box_Green.png' class='option-image' alt='Always felt safe as a patient'>" } %>
     </div>
   </div>
+  <div class="control-group chosen-holder" style="display:none">
+    <div class="chosen-label"><label></label></div>
+  </div>
+</div>
 
-  <div class="control-group">
+<div class="question-holder">
+  <div class="control-group form-inline">
     <label class="control-label">Do you think this has happened to other patients before?</label>
     <div class="controls">
       <%= erb :"partials/radio_button", :locals => { :name => "happened_before", :value => "yes", :param => params[:happened_before], :label => "Yes" } %>
       <%= erb :"partials/radio_button", :locals => { :name => "happened_before", :value => "no", :param => params[:happened_before], :label => "No" } %>
     </div>
   </div>
+</div>
 
-  <div class="control-group">
+<div class="question-holder">
+  <div class="control-group form-inline">
     <label class="control-label">Have you already told us about what happened?</label>
     <div class="controls">
       <%= erb :"partials/radio_button", :locals => { :name => "told_us", :value => "yes", :param => params[:told_us], :label => "Yes" } %>
       <%= erb :"partials/radio_button", :locals => { :name => "told_us", :value => "no", :param => params[:told_us], :label => "No" } %>
     </div>
   </div>
+</div>
 
-  <div class="control-group">
+<div class="question-holder">
+  <div class="control-group form-inline">
     <label class="control-label">How important do you think is patient safety to us?</label>
     <div class="controls">
-      <%= erb :"partials/radio_button", :locals => { :name => "how_important_safety", :value => "red", :param => params[:how_important_safety], :label => "We don’t really care about your safety as long as no-one gets hurt" } %>
-      <%= erb :"partials/radio_button", :locals => { :name => "how_important_safety", :value => "amber", :param => params[:how_important_safety], :label => "We do a lot when things go wrong trying to fix problems" } %>
-      <%= erb :"partials/radio_button", :locals => { :name => "how_important_safety", :value => "green", :param => params[:how_important_safety], :label => "Safety is how we do business around here" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "how_important_safety", :value => "red", :param => params[:how_important_safety], :label => "<img src='/vendor/Box_Red.png' class='option-image' alt='We don’t really care about your safety as long as no-one gets hurt'>" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "how_important_safety", :value => "amber", :param => params[:how_important_safety], :label => "<img src='/vendor/Box_Orange.png' class='option-image' alt='We do a lot when things go wrong trying to fix problems'>" } %>
+      <%= erb :"partials/radio_button", :locals => { :name => "how_important_safety", :value => "green", :param => params[:how_important_safety], :label => "<img src='/vendor/Box_Green.png' class='option-image' alt='Safety is how we do business around here'>" } %>
     </div>
   </div>
+  <div class="control-group chosen-holder" style="display:none">
+    <div class="chosen-label"><label></label></div>
+  </div>
+</div>
 
-  <div class="control-group">
+<div class="question-holder">
+  <div class="control-group form-inline">
     <label class="control-label">Did we say we’re sorry?</label>
     <div class="controls">
       <%= erb :"partials/radio_button", :locals => { :name => "apologised", :value => "yes", :param => params[:happened_before], :label => "Yes" } %>
       <%= erb :"partials/radio_button", :locals => { :name => "apologised", :value => "no", :param => params[:happened_before], :label => "No" } %>
     </div>
   </div>
+</div>
 
-  <div class="control-group">
+<div class="question-holder">
+  <div class="control-group form-inline">
     <label class="control-label">If yes: Were you satisfied with the way we said sorry to you?</label>
     <div class="controls">
       <%= erb :"partials/radio_button", :locals => { :name => "satisfied", :value => "yes", :param => params[:satisfied], :label => "Yes" } %>
       <%= erb :"partials/radio_button", :locals => { :name => "satisfied", :value => "no", :param => params[:satisfied], :label => "No" } %>
     </div>
   </div>
+</div>
 
-  <div class="control-group">
+
+<div class="question-holder">
+  <div class="control-group form-inline">
     <label class="control-label">Would you recommend us to your friends and family?</label>
     <div class="controls">
       <%= erb :"partials/radio_button", :locals => { :name => "would_recommend", :value => "yes", :param => params[:would_recommend], :label => "Yes" } %>
       <%= erb :"partials/radio_button", :locals => { :name => "would_recommend", :value => "no", :param => params[:would_recommend], :label => "No" } %>
     </div>
   </div>
+</div>
 
   <div class="control-group">
     <div class="controls">
-      <button type="submit" class="btn">Submit</button>
+      <button type="submit" class="btn" style="margin-left:20px;">Submit</button>
     </div>
   </div>
 </form>
+<script type="text/javascript">
+  $('.option-select').change(function(){
+    if ($(this).is(':checked')) {
+      $(this).closest('div.question-holder').children('div.chosen-holder').css('display','').find('label').html($(this).closest('label').children('img').attr('alt'));
+    }
+  });
+  $(document).ready(function(){
+    $('.option-select').each(function(){
+      if ($(this).is(':checked')) {
+        $(this).closest('div.question-holder').children('div.chosen-holder').css('display','').find('label').html($(this).closest('label').children('img').attr('alt'));
+      }
+    });
+  });
+</script>

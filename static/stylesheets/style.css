@@ -18,6 +18,21 @@ div.row-fluid [class*="span"] .center-in-span { float: none; margin: 0 auto; tex
 		height:128px;
 	}
 }
+
+.chosen-label {
+	margin-left: 200px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background: #e9eaee;
+
+	width: 370px;
+}
+
+.chosen-label label {
+	padding-left: 5px;
+	padding-top: 3px;
+}
 @media (max-width: 979px){
 	body {
 		padding-top: 0px !important;
@@ -30,6 +45,16 @@ div.row-fluid [class*="span"] .center-in-span { float: none; margin: 0 auto; tex
 		max-width:65%;
 		min-width:65%;
         font-weight: bold !important;
+	}
+	.chosen-label {
+		padding-left: 5px;
+		margin-left: 20px;
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		border-radius: 3px;
+		background: #e9eaee;
+
+		width: 370px;
 	}
 }
 
@@ -45,4 +70,23 @@ div.row-fluid [class*="span"] .center-in-span { float: none; margin: 0 auto; tex
   padding: 5px;
   color: white;
   font-weight: bold;
+}
+
+#overall_form .form-inline {
+	margin-left: 20px;
+	display: inline-block;
+	vertical-align: bottom;
+	margin-top: 3px;
+}
+
+.form-inline div.controls {
+	margin-top: 5px;
+}
+
+.form-inline div.controls label.radio {
+	padding-top: 0px;
+}
+
+.form-inline div.controls label.radio:not(:first-child) {
+	padding-left: 5px;
 }
