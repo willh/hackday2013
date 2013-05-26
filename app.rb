@@ -1,10 +1,7 @@
-
+require './model/feedback'
 require 'rubygems'
 require 'sinatra'
-require 'dm-core'
-require 'dm-timestamps'
-require 'dm-validations'
-require 'dm-migrations'
+require 'data_mapper' 
 require_relative 'admin.rb'
 
 FEEDBACK_KEY = "best.feedback"
@@ -17,8 +14,27 @@ use Rack::Session::Cookie, :key => FEEDBACK_KEY,
 configure do
   set :public_folder, Proc.new { File.join(root, "static") }
   DataMapper.setup(:default, (ENV['DATABASE_URL'] || 'postgres://localhost/hackday2013'))
-  #DataMapper.auto_migrate! # not needed until we need destructive migrations
-  DataMapper.auto_upgrade!
+  DataMapper.finalize
+  DataMapper.auto_migrate!
+  sample = Feedback.create(
+    :location => "Ward 3", 
+    :date => "2001-01-01 10:10:10", 
+    :time_of_day => "Morning", 
+    :type => "miscommunication", 
+    :incident_points => ["bad_communication", "no_reason_medicine"], 
+    :incident_comments => "I'm not sure if the nurses treating me are talking", 
+    :good_points => ["friendly", "helpful"], 
+    :bad_points => ["unclean", "poor_food_quality"], 
+    :general_comments => "The staff were very nice", 
+    :severity => "Low", 
+    :safety => "Low", 
+    :happened_before => "No",
+    :told_us => "Yes",
+    :how_important_safety => "Medium",
+    :apologised => "Yes", 
+    :satisfied => "Yes", 
+    :would_recommend => "Maybe"
+    )
 end
 
 helpers do
@@ -37,6 +53,10 @@ get '/contact' do
   erb :contact
 end
 
+get '/context' do
+  erb :context
+end
+
 get '/feedback' do
   session[FEEDBACK_KEY] ||= {}
   erb :feedback
@@ -52,10 +72,10 @@ post '/feedback' do
 end
 
 get '/feedback/:type' do
-  params[:incident_options] = session[FEEDBACK_KEY][:incident_points]
+  params[:incident_points] = session[FEEDBACK_KEY][:incident_points]
   params[:incident_comments] = session[FEEDBACK_KEY][:incident_comments]
 
-  params[:incident_options] ||= []
+  params[:incident_points] ||= []
   params[:incident_comments] ||= ""
 
   incident_type.each do |o|
@@ -67,7 +87,7 @@ get '/feedback/:type' do
 end
 
 post '/feedback/:type' do
-  session[FEEDBACK_KEY][:incident_points] = params[:incident_options]
+  session[FEEDBACK_KEY][:incident_points] = params[:incident_points]
   session[FEEDBACK_KEY][:incident_comments] = params[:incident_comments]
   redirect "/feedback/#{params[:type]}/general"
 end
@@ -120,8 +140,16 @@ post '/feedback/:type/general/overall' do
   erb :finished, :locals => { :feedback_ref => feedback_ref }
 end
 
+def get_all_feedback
+  Feedback.all
+end
+
 def save_feedback(feedback_hash)
-  "1234"
+  puts "Date: " + feedback_hash[:date]
+  puts "Incident points: " + (feedback_hash[:incident_points].to_s || "")
+  puts "Good points: " + (feedback_hash[:good_points].to_s || "")
+  puts "Bad points: " + (feedback_hash[:bad_points].to_s || "")
+  Feedback.newFromHash(feedback_hash)
 end
 
 def good_points_options

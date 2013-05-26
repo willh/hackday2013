@@ -5,7 +5,7 @@
     <div class="controls">
       <select name="incident_options[]" multiple="multiple">
         <% incident_options.each do |o| %>
-        <option value="<%= o[:value]%>" <% if params[:incident_options].include?(o[:value]) %>selected<% end %> >
+        <option value="<%= o[:value]%>" <% if params[:incident_points].include?(o[:value]) %>selected<% end %> >
           <%= o[:name] %>
         </option>
         <% end %>
