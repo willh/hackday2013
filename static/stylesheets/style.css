@@ -33,3 +33,12 @@
 		min-width:65%;
 	}
 }
+
+/* Treemap */
+.node {
+  border: solid 1px white;
+  line-height: 12px;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+}
