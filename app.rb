@@ -75,10 +75,10 @@ post '/feedback' do
 end
 
 get '/feedback/:type' do
-  params[:incident_points] = session[FEEDBACK_KEY][:incident_points]
+  params[:incident_options] = session[FEEDBACK_KEY][:incident_points]
   params[:incident_comments] = session[FEEDBACK_KEY][:incident_comments]
 
-  params[:incident_points] ||= []
+  params[:incident_options] ||= []
   params[:incident_comments] ||= ""
 
   incident_type.each do |o|
