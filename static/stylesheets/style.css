@@ -84,6 +84,21 @@ div.row-fluid [class*="span"] .center-in-span { float: none; margin: 0 auto; tex
   font-weight: bold;
 }
 
+/* line */
+path {
+    stroke: steelblue;
+    stroke-width: 2;
+    fill: none;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
 #overall_form .form-inline {
 	margin-left: 20px;
 	display: inline-block;
