@@ -10,10 +10,10 @@ class Feedback
     property :time_of_day,           String
     property :type,                  String
     property :incident_points,       StringArray
-    property :incident_comments,     String
+    property :incident_comments,     Text,          :lazy => false
     property :good_points,           StringArray
     property :bad_points,            StringArray
-    property :general_comments,      String
+    property :general_comments,      Text,          :lazy => false
     property :severity,              String
     property :safety,                String
     property :happened_before,       String
@@ -51,7 +51,7 @@ class Feedback
             puts "\nfailed to save!\n"
             saved.errors.each do |e|
                puts e
-             end
+            end
         end
         saved.id
 

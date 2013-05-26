@@ -1,4 +1,5 @@
 require './model/feedback'
+require './service/sampledata'
 require 'rubygems'
 require 'sinatra'
 require 'data_mapper' 
@@ -18,7 +19,7 @@ configure do
   DataMapper.auto_migrate!
   sample = Feedback.create(
     :location => "Ward 3", 
-    :date => "2001-01-01 10:10:10", 
+    :date => "2013-05-26 10:10:10", 
     :time_of_day => "Morning", 
     :type => "miscommunication", 
     :incident_points => ["bad_communication", "no_reason_medicine"], 
@@ -34,7 +35,9 @@ configure do
     :apologised => "Yes", 
     :satisfied => "Yes", 
     :would_recommend => "Maybe"
-    )
+  )
+  SampleData.load
+
 end
 
 helpers do
