@@ -37,6 +37,10 @@ get '/contact' do
   erb :contact
 end
 
+get '/context' do
+  erb :context
+end
+
 get '/feedback' do
   session[FEEDBACK_KEY] ||= {}
   erb :feedback
@@ -45,7 +49,7 @@ end
 post '/feedback' do
   puts params["incident-date"]
   session[FEEDBACK_KEY] ||= {}
-  session[FEEDBACK_KEY][:date] = params[:date]
+  session[FEEDBACK_KEY][:date] = params[:type]
   session[FEEDBACK_KEY][:type] = params[:type]
 
   redirect "/feedback/#{params[:type]}"
