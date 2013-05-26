@@ -17,6 +17,11 @@ $( document ).ready(function() {
     }).draw(940, 400);
   });
 
-
+  $(".linechart").each(function(index, node) {
+    new best.charts.linechart.Widget(node, {
+      title: 'Incidents over time',
+      jsonUrl: $(node).attr('data-url')
+    }).draw(940, 350);
+  });
 
 });

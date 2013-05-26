@@ -50,7 +50,7 @@ end
 
 get '/admin/api/incidents_by_location/:location' do
   {
-    :name => params[:location],
+    :name => 'Ward 21',
     :value => 23,
     :children => [
       { :name => 'Facilities', :value => 9 },
@@ -58,4 +58,15 @@ get '/admin/api/incidents_by_location/:location' do
       { :name => 'Drug Error', :value => 3 }
     ]
   }.to_json
+end
+
+get '/admin/api/incidents_over_time' do
+  [
+    { :date => '01-01-2013', :value => 10 },
+    { :date => '01-02-2013', :value => 11 },
+    { :date => '01-03-2013', :value => 14 },
+    { :date => '01-04-2013', :value => 8 },
+    { :date => '01-05-2013', :value => 23 },
+    { :date => '01-06-2013', :value => 5 }
+  ].to_json
 end

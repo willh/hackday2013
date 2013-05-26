@@ -26,23 +26,24 @@
       </div>
       <div class="span6">
       <legend>Incident Type</legend>
-            <div class="row-fluid">
-            <div class="span3 bottomMargin " name="general" onclick="changeType(event)">
-               <img class="launchIcon" src="/vendor/smiley_face.png"/></a>
-               <span class="help-block launchIconText">Tell us what made you feel safe whilst in our care!</span>
-            </div>
-         <div class="span1"></div>
-            <div class="span3 bottomMargin " name="miscommunication" onclick="changeType(event)">
-               <img class="launchIcon" src="/vendor/miscommunication.png"/></a>
-               <span class="help-block launchIconText">Do you feel there was a miscommunication between you and our staff?</span>
-            </div>
-         <div class="span1"></div>
-            <div class="span3 bottomMargin " name="drug-errors" onclick="changeType(event)">
-               <img class="launchIcon" src="/vendor/syringe_icon.png"/></a>
-               <span class="help-block launchIconText">Do you feel that there was an issue with your medicine?</span>
-            </div>
-         <div class="span1"></div>
-       </div>
+        <label class="radio">
+          <input type="radio" class="launch-radio" name="optionsRadios[]" id="optionsRadios1" value="miscommunication" checked>
+          <img class="launchIcon" src="/vendor/smiley_face.png"/>Tell us what made you feel safe whilst in our care!
+        </label>
+        <label class="radio">
+          <input type="radio" class="launch-radio" name="optionsRadios[]" id="optionsRadios2" value="miscommunication">
+          <img class="launchIcon" src="/vendor/miscommunication.png"/>Do you feel there was a miscommunication between you and our staff?
+        </label>
+        <label class="radio">
+          <input type="radio" class="launch-radio" name="optionsRadios[]" id="optionsRadios2" value="drug-error">
+          <img class="launchIcon" src="/vendor/syringe_icon.png"/>Do you feel that there was an issue with your medicine?
+        </label>
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn" style="margin-top:10px;" onclick="changeType(event)">Next</button>
+          </div>
+        </div>
+
    </fieldset>
 </form>
 <script>
@@ -50,9 +51,16 @@
    //and appends it to the form.
    function changeType(e)
    {
+      var incidentType = "miscommunication";
+      $('.launch-radio').each(function(){
+        if ($(this).is(':checked')){
+          incidentType = $(this).attr('value');
+        }
+      });
+
       $('<input type="hidden">').attr({
             name: 'type',
-           value: $(e.srcElement.parentElement).attr("name"),
+           value: incidentType,
         }).appendTo('#postForm');   
       $('#postForm').submit();
    }
