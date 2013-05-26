@@ -69,7 +69,6 @@ best.charts.treemap = best.charts.treemap || (function() {
           .style("left", margin.left + "px")
           .style("top", margin.top + "px");
 
-
         var node = div.datum(root).selectAll(".node")
           .data(treemap.nodes)
           .enter().append("div")
@@ -80,8 +79,13 @@ best.charts.treemap = best.charts.treemap || (function() {
                 .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
                 .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
           })
-          .style("background", function(d) { return d.children ? color(d.name) : null; })
-          .text(function(d) { return d.children ? null : d.name + ' - ' + d.value; });
+          .on("click", function(d) {
+            if (d.url) {
+              window.location = d.url;
+            }
+          })
+          .style("background", function(d) { return d.children ? null : d3.rgb(color(d.name)).darker(); })
+          .append('span').html(function(d) { return d.children ? null : d.name + ' - <em>' + d.value + '</em>'; });
 
         console.log('data!', root);
       });

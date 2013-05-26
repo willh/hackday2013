@@ -20,22 +20,22 @@ get '/admin/api/incidents_by_location' do
       {
         :name => 'Ward 10',
         :value => 13,
-        :url => '/admin/api/incidents_by_location/ward_10'
+        :url => '/admin/location/ward_10'
       },
       {
         :name => 'Reception',
         :value => 23,
-        :url => '/admin/api/incidents_by_location/reception'
+        :url => '/admin/location/reception'
       },
       {
         :name => 'Ward 6S',
         :value => 18,
-        :url => '/admin/api/incidents_by_location/ward_6s'
+        :url => '/admin/location/ward_6s'
       },
       {
         :name => 'Ward 21',
         :value => 4,
-        :url => '/admin/api/incidents_by_location/ward_21'
+        :url => '/admin/location/ward_21'
       },
     ]
   }.to_json
