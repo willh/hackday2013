@@ -23,18 +23,17 @@ class Feedback
     property :satisfied,             String
     property :would_recommend,       String
 
-    def newFromHash(feedback_hash)
+    def self.newFromHash(feedback_hash)
 
-        Feedback.create(
-            :id => feedback_hash[:id] || "",
+        saved = Feedback.create(
             :location => feedback_hash[:location] || "",
             :date => feedback_hash[:date] || "2013-05-26 10:10:10",
             :time_of_day => feedback_hash[:time_of_day] || "",
             :type => feedback_hash[:type] || "",
-            :incident_points => feedback_hash[:incident_points] || "",
+            :incident_points => feedback_hash[:incident_points] || [""],
             :incident_comments => feedback_hash[:incident_comments] || "",
-            :good_points => feedback_hash[:good_points] || "",
-            :bad_points => feedback_hash[:bad_points] || "",
+            :good_points => feedback_hash[:good_points] || [""],
+            :bad_points => feedback_hash[:bad_points] || [""],
             :general_comments => feedback_hash[:general_comments] || "",
             :severity => feedback_hash[:severity] || "",
             :safety => feedback_hash[:safety] || "",
@@ -45,6 +44,16 @@ class Feedback
             :satisfied => feedback_hash[:satisfied] || "",
             :would_recommend => feedback_hash[:would_recommend] || ""
         )
+
+        if saved.saved? 
+            puts "\nsaved feedback!\n"
+        else
+            puts "\nfailed to save!\n"
+            saved.errors.each do |e|
+               puts e
+             end
+        end
+        saved.id
 
     end
 

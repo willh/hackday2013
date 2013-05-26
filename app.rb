@@ -65,7 +65,7 @@ end
 post '/feedback' do
   puts params["incident-date"]
   session[FEEDBACK_KEY] ||= {}
-  session[FEEDBACK_KEY][:date] = params[:type]
+  session[FEEDBACK_KEY][:date] = params[:date]
   session[FEEDBACK_KEY][:type] = params[:type]
 
   redirect "/feedback/#{params[:type]}"
@@ -141,6 +141,10 @@ post '/feedback/:type/general/overall' do
 end
 
 def save_feedback(feedback_hash)
+  puts "Date: " + feedback_hash[:date]
+  puts "Incident points: " + (feedback_hash[:incident_points].to_s || "")
+  puts "Good points: " + (feedback_hash[:good_points].to_s || "")
+  puts "Bad points: " + (feedback_hash[:bad_points].to_s || "")
   Feedback.newFromHash(feedback_hash)
 end
 
