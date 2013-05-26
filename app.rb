@@ -66,10 +66,10 @@ get '/feedback' do
 end
 
 post '/feedback' do
-  puts params["incident-date"]
   session[FEEDBACK_KEY] ||= {}
   session[FEEDBACK_KEY][:date] = params[:date]
   session[FEEDBACK_KEY][:type] = params[:type]
+  session[FEEDBACK_KEY][:location] = params[:location]
 
   redirect "/feedback/#{params[:type]}"
 end
