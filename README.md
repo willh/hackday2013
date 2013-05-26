@@ -17,6 +17,32 @@ By identifying commonly reported issues hospitals can target areas for
 improvement, helping patient care and saving time and money from 
 being wasted on reoccuring incidents.
 
+## Data Model
+
+A feedback object is created and saved when an incident is reported using the application. The feedback object currently has the following flat structure:
+
+    Property               Type
+    ______________________________________________
+    id                     Incrementing ID integer
+    location               String
+    date                   DateTime
+    time_of_day            String
+    type                   String
+    incident_points        Array of String
+    incident_comments      String
+    good_points            Array of String
+    bad_points             Array of String
+    general_comments       String
+    severity               String
+    safety                 String
+    happened_before        String
+    told_us                String
+    how_important_safety   String
+    apologised             String
+    satisfied              String
+    would_recommend        String
+
+
 ## Deploying to Heroku
 
 Download and install the Heroku toolkit and run the following commands.
