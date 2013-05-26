@@ -47,12 +47,11 @@ A feedback object is created and saved when an incident is reported using the ap
 
 Download and install the Heroku toolkit and run the following commands.
 
-Login and create the app:
-> heroku login
-> heroku create
-Add the postgres addon and set the DB URL as DATABASE_URL environment
-variable
-> heroku addons:add heroku-postgresql
-> heroku pg:promote HEROKU_POSTGRESQL_MYDBFROMPREVCOMMAND_URL
-Deploy the app to heroku
-> git push heroku master
+Login and create the app:  
+`> heroku login`  
+`> heroku create`  
+Add the postgres addon and set the DB URL as DATABASE_URL environment variable  
+`> heroku addons:add heroku-postgresql`  
+`> heroku pg:promote HEROKU_POSTGRESQL_MYDBFROMPREVCOMMAND_URL`  
+Deploy the app to heroku  
+`> git push heroku master`  
