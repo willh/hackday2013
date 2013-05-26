@@ -11,6 +11,14 @@ div.row-fluid [class*="span"] .center-in-span { float: none; margin: 0 auto; tex
 	border-width: 1px;
 	border-style:solid;
 }
+.contact-number {
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-weight: bold;
+	font-size: 30px;
+	color: #2a2;
+}
+
 @media (min-width: 979px){
 
 .launchIcon {
