@@ -50,7 +50,7 @@ end
 
 get '/admin/api/incidents_by_location/:location' do
   {
-    :name => params[:location],
+    :name => 'Ward 21',
     :value => 23,
     :children => [
       { :name => 'Facilities', :value => 9 },
