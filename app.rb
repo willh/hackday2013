@@ -20,11 +20,11 @@ configure do
     :location => "Ward 3", 
     :date => "2001-01-01 10:10:10", 
     :time_of_day => "Morning", 
-    :type => "Communication", 
-    :incident_points => ["Repeated allergies", "Repeated current medication"], 
+    :type => "miscommunication", 
+    :incident_points => ["bad_communication", "no_reason_medicine"], 
     :incident_comments => "I'm not sure if the nurses treating me are talking", 
-    :good_points => ["Staff pleasant", "Comfortable stay"], 
-    :bad_points => ["Bedside phone not working", "Meals delivered late"], 
+    :good_points => ["friendly", "helpful"], 
+    :bad_points => ["unclean", "poor_food_quality"], 
     :general_comments => "The staff were very nice", 
     :severity => "Low", 
     :safety => "Low", 
@@ -32,7 +32,7 @@ configure do
     :told_us => "Yes",
     :how_important_safety => "Medium",
     :apologised => "Yes", 
-    :satisfied => "", 
+    :satisfied => "Yes", 
     :would_recommend => "Maybe"
     )
 end
@@ -138,6 +138,10 @@ post '/feedback/:type/general/overall' do
   feedback_ref = save_feedback(session[FEEDBACK_KEY])
 
   erb :finished, :locals => { :feedback_ref => feedback_ref }
+end
+
+def get_all_feedback
+  Feedback.all
 end
 
 def save_feedback(feedback_hash)
