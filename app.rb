@@ -176,7 +176,7 @@ def bad_points_options
 end
 
 
-def incident_options
+def drug_options
   [
     {:name => "Wrong medicine was given", :value => "wrong_medicine"},
     {:name => "Medicine was not given at all", :value => "no_medicine"},
@@ -184,7 +184,16 @@ def incident_options
     {:name => "Medicine was given at the wrong time", :value => "wrong_time_medicine"},
     {:name => "Medicine was given but patient had an allergy to this", :value => "allergy_not_noted"},
     {:name => "No-one explained why the medicine was given", :value => "no_reason_medicine"},
-    {:name => "Plan for medicine at home was not clear", :value => "bad_communication"}
+    {:name => "Plan for medicine at home was not clear", :value => "home_med_plan_unclear"}
+  ]
+end
+
+def miscommunication_options
+  [
+    {:name => "Communication amongst medical staff was unclear", :value => "bad_communication_staff"},
+    {:name => "Communication with patient or family was unclear", :value => "bad_communication_patient"},
+    {:name => "Not enough information about procedures", :value => "no_reason_procedures"},
+    {:name => "No follow up or discharge letter was given", :value => "no_follow_up"}
   ]
 end
 
