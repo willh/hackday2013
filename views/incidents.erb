@@ -1,16 +1,17 @@
-<h1><%=params[:type_string]%></h1>
+<div class="page-header">
+	<h1><%=params[:type_string]%></h1>
+</div>
 <form action="/feedback/<%= params[:type] %>" method='post' class="form-horizontal">
   <div class="control-group">
-    <label class="control-label" for="incident_options">Reasons</label>
+    <label class="control-label" style="display:inline-block; line-height:1.2; padding-left:5px;" for="incident_options">Reasons</label>
+    <% incident_options.each do |o| %>
     <div class="controls">
-      <select name="incident_options[]" multiple="multiple">
-        <% incident_options.each do |o| %>
-        <option value="<%= o[:value]%>" <% if params[:incident_points].include?(o[:value]) %>selected<% end %> >
-          <%= o[:name] %>
-        </option>
-        <% end %>
-      </select>
+      <label class="checkbox" for="<%= o[:value]%>">        
+        <input type="checkbox" style="vertical-align:top; margin-top:3px;" name="incident_options[]" id="<%= o[:value]%>" value="<%= o[:value]%>" <% if params[:incident_options].include?(o[:value]) %>checked<% end %> >
+        </input><%= o[:name] %>
+      </label>
     </div>
+    <% end %>
   </div>
   <div class="control-group">
     <label class="control-label" for="general_comments">Other Comments</label>
