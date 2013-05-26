@@ -58,14 +58,17 @@ best.charts.treemap = best.charts.treemap || (function() {
         .sticky(true)
         .value(function(d) { return d.value; });
 
-      var div = d3.select("#treemap").append("div")
+      d3.json(that.opts.jsonUrl, function(error, root) {
+
+        var header = d3.select("#treemap").append("h2").text(root.name + ' - ' + root.value)
+
+        var div = d3.select("#treemap").append("div")
           .style("position", "relative")
           .style("width", (width + margin.left + margin.right) + "px")
           .style("height", (height + margin.top + margin.bottom) + "px")
           .style("left", margin.left + "px")
           .style("top", margin.top + "px");
 
-      d3.json(that.opts.jsonUrl, function(error, root) {
 
         var node = div.datum(root).selectAll(".node")
           .data(treemap.nodes)
